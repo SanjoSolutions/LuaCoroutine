@@ -1,3 +1,8 @@
+function runAsCoroutine(fn)
+  local thread = coroutine.create(fn)
+  resumeWithShowingError(thread)
+end
+
 function resumeWithShowingError(thread, ...)
   local result = {coroutine.resume(thread, ...)}
   local wasSuccessful = result[1]
