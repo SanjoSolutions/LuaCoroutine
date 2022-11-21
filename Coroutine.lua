@@ -29,6 +29,8 @@ function waitFor(predicate, timeout)
   return coroutine.yield()
 end
 
+waitUntil = waitFor
+
 function waitForDuration(duration)
   local thread = coroutine.running()
   C_Timer.After(duration, function()
