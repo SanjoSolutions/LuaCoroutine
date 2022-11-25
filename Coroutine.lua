@@ -4,7 +4,7 @@ function runAsCoroutine(fn)
 end
 
 function resumeWithShowingError(thread, ...)
-  local result = {coroutine.resume(thread, ...)}
+  local result = { coroutine.resume(thread, ...) }
   local wasSuccessful = result[1]
   if not wasSuccessful then
     local errorMessage = result[2]
