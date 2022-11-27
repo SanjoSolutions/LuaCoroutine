@@ -1,9 +1,11 @@
-function runAsCoroutine(fn)
+Coroutine = {}
+
+function Coroutine.runAsCoroutine(fn)
   local thread = coroutine.create(fn)
-  resumeWithShowingError(thread)
+  Coroutine.resumeWithShowingError(thread)
 end
 
-function resumeWithShowingError(thread, ...)
+function Coroutine.resumeWithShowingError(thread, ...)
   local result = { coroutine.resume(thread, ...) }
   local wasSuccessful = result[1]
   if not wasSuccessful then
@@ -13,28 +15,28 @@ function resumeWithShowingError(thread, ...)
   return unpack(result)
 end
 
-function waitFor(predicate, timeout)
+function Coroutine.waitFor(predicate, timeout)
   local thread = coroutine.running()
   local ticker
   local startTime = GetTime()
   ticker = C_Timer.NewTicker(0, function()
     if predicate() then
       ticker:Cancel()
-      resumeWithShowingError(thread, true)
+      Coroutine.resumeWithShowingError(thread, true)
     elseif timeout and GetTime() - startTime >= timeout then
       ticker:Cancel()
-      resumeWithShowingError(thread, false)
+      Coroutine.resumeWithShowingError(thread, false)
     end
   end)
   return coroutine.yield()
 end
 
-waitUntil = waitFor
+Coroutine.waitUntil = Coroutine.waitFor
 
-function waitForDuration(duration)
+function Coroutine.waitForDuration(duration)
   local thread = coroutine.running()
   C_Timer.After(duration, function()
-    resumeWithShowingError(thread)
+    Coroutine.resumeWithShowingError(thread)
   end)
   return coroutine.yield()
 end
