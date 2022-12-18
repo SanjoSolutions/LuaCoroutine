@@ -40,3 +40,9 @@ function Coroutine.waitForDuration(duration)
   end)
   return coroutine.yield()
 end
+
+function Coroutine.runNextFrame(fn)
+  RunNextFrame(function ()
+    Coroutine.runAsCoroutine(fn)
+  end)
+end
