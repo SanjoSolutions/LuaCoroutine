@@ -46,3 +46,11 @@ function Coroutine.runNextFrame(fn)
     Coroutine.runAsCoroutine(fn)
   end)
 end
+
+function Coroutine.yieldAndResume()
+  local thread = coroutine.running()
+  C_Timer.After(0, function ()
+    Coroutine.resumeWithShowingError(thread)
+  end)
+  coroutine.yield()
+end
