@@ -2,7 +2,10 @@ Coroutine = {}
 
 function Coroutine.runAsCoroutine(fn)
   local thread = coroutine.create(fn)
-  Coroutine.resumeWithShowingError(thread)
+  RunNextFrame(function ()
+    Coroutine.resumeWithShowingError(thread)
+  end)
+  return thread
 end
 
 function Coroutine.resumeWithShowingError(thread, ...)
