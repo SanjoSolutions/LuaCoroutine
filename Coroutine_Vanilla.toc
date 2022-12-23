@@ -1,5 +1,4 @@
 ## Title: Coroutine
 ## Interface: 11403
 
-libs/Library/Library.lua
 Coroutine.lua
