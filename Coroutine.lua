@@ -19,19 +19,23 @@ function Coroutine.resumeWithShowingError(thread, ...)
 end
 
 function Coroutine.waitFor(predicate, timeout)
-  local thread = coroutine.running()
-  local ticker
-  local startTime = GetTime()
-  ticker = C_Timer.NewTicker(0, function()
-    if predicate() then
-      ticker:Cancel()
-      Coroutine.resumeWithShowingError(thread, true)
-    elseif timeout and GetTime() - startTime >= timeout then
-      ticker:Cancel()
-      Coroutine.resumeWithShowingError(thread, false)
-    end
-  end)
-  return coroutine.yield()
+  if predicate() then
+    return true
+  else
+    local thread = coroutine.running()
+    local ticker
+    local startTime = GetTime()
+    ticker = C_Timer.NewTicker(0, function()
+      if predicate() then
+        ticker:Cancel()
+        Coroutine.resumeWithShowingError(thread, true)
+      elseif timeout and GetTime() - startTime >= timeout then
+        ticker:Cancel()
+        Coroutine.resumeWithShowingError(thread, false)
+      end
+    end)
+    return coroutine.yield()
+  end
 end
 
 Coroutine.waitUntil = Coroutine.waitFor
