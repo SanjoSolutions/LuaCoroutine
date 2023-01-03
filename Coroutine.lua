@@ -8,6 +8,12 @@ function Coroutine.runAsCoroutine(fn)
   return thread
 end
 
+function Coroutine.runAsCoroutineImmediately(fn)
+  local thread = coroutine.create(fn)
+  Coroutine.resumeWithShowingError(thread)
+  return thread
+end
+
 function Coroutine.resumeWithShowingError(thread, ...)
   local result = { coroutine.resume(thread, ...) }
   local wasSuccessful = result[1]
