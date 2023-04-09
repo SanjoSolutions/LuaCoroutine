@@ -1,4 +1,5 @@
 ## Title: Coroutine
 ## Interface: 30400
+## Version: 1.0.0
 
 Coroutine.lua
