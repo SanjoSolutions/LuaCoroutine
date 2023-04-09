@@ -8,6 +8,9 @@ function Coroutine.runAsCoroutine(fn)
   return thread
 end
 
+--- @deprecated Please use Coroutine.runAsCoroutine instead.
+Coroutine.runNextFrame = Coroutine.runAsCoroutine
+
 function Coroutine.runAsCoroutineImmediately(fn)
   local thread = coroutine.create(fn)
   Coroutine.resumeWithShowingError(thread)
@@ -52,12 +55,6 @@ function Coroutine.waitForDuration(duration)
     Coroutine.resumeWithShowingError(thread)
   end)
   return coroutine.yield()
-end
-
-function Coroutine.runNextFrame(fn)
-  RunNextFrame(function ()
-    Coroutine.runAsCoroutine(fn)
-  end)
 end
 
 function Coroutine.yieldAndResume()
