@@ -1,6 +1,5 @@
 ## Title: Coroutine
-## Interface: 100007
-## Version: 1.0.0
-## Dependencies: Library
+## Interface: 100105
+## Version: 2.0.0
 
 Coroutine.xml
