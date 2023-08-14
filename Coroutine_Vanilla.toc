@@ -1,5 +1,6 @@
 ## Title: Coroutine
 ## Interface: 11403
 ## Version: 1.0.0
+## Dependencies: Library
 
-Coroutine.lua
+Coroutine.xml

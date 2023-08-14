@@ -17,4 +17,10 @@ A library for working with coroutines. This can help other add-on creators to sa
 * **Coroutine.waitForDuration** a function that waits for a specific duration.
 * **Coroutine.yieldAndResume** a function which yields and schedules a resume.
 
+## How to use
+
+Please see "[How to use Library](https://github.com/SanjoSolutions/LuaLibrary#how-to-use)" for how to use this library.
+
+## Support
+
 You can support me on [Patreon](https://www.patreon.com/addons_by_sanjo).
