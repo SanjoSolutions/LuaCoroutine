@@ -1,5 +1,6 @@
 ## Title: Coroutine
 ## Interface: 100105
 ## Version: 2.0.0
+## OptionalDeps: Library
 
 Coroutine.xml
