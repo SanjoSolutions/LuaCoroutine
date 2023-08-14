@@ -1,0 +1,6 @@
+{
+  "name": "Conditionals",
+  "dependencies": {
+    "Library": "SanjoSolutions/LuaLibrary#v0.4.0"
+  }
+}
